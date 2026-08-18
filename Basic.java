@@ -1,5 +1,5 @@
 
-public class S {
+public class Basic {
 
     public static void toPrintArray(int[] arr) {
         for (int i = 0; i < arr.length; i++) {

@@ -219,7 +219,7 @@
 //-------------------Strings---------------------//
 import java.util.*;
 
-public class arrays {
+public class Advance {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
