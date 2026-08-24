@@ -1,4 +1,4 @@
-
+import java.util.HashSet;
 public class Advance {
 
     public static void toPrintArray(int[] arr) {
@@ -206,6 +206,45 @@ public class Advance {
         }
     }
 
+
+
+    public static void subsequence(String str , int idx , String newString , HashSet<String> set){
+        if(idx==str.length()){
+
+            if(set.contains(newString)){
+                return;
+            }else{
+                System.out.println(newString);
+                set.add(newString);
+                return;
+            }
+            
+        }
+        char current = str.charAt(idx);
+
+        subsequence(str, idx+1, newString+current ,set);
+
+        subsequence(str, idx+1, newString , set);
+    }
+
+
+
+    public static String[] keyPad = {".","abc","efg","hig","klm","no","pqrs","tu","vwx","yz" };
+    public static void printComb(String str, int idx , String combination) {
+        if(idx==str.length()){
+            System.out.println(combination);
+            return;
+        }
+        char current = str.charAt(idx);
+
+        String mapping = keyPad[current - '0'];
+
+        for(int i =0; i<mapping.length();i++){
+            printComb(str, idx+1, combination+mapping.charAt(i));
+        }
+        
+    }
+
     public static void main(String[] args) {
 
         //-------------------Bubbole Sort-------------------//
@@ -302,8 +341,16 @@ public class Advance {
     // moveToLast(str, 0, 0, 'c', newStr);
 
 
-    String str ="abbcdefghiiiessikwwwlaaad";
-    removeDupe(str, 0, " ");
+    // String str ="abbcdefghiiiessikwwwlaaad";
+    // removeDupe(str, 0, " ");
+
+
+    // String str = "aaa";
+    // HashSet<String> set = new HashSet<>();
+    // subsequence(str, 0, "" , set);
+
+    String str = "234";
+    printComb(str, 0, "");
     }
 
 }
