@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashSet;
 public class Advance {
 
@@ -245,6 +246,89 @@ public class Advance {
         
     }
 
+
+    public static void permutation(String str , String permu){
+        if(str.length()==0){
+            System.out.println(permu);
+            return;
+        }
+
+        for(int i=0; i<str.length();i++){
+            char current = str.charAt(i);
+            String newsString = str.substring(0,i)+ str.substring(i+1);
+            permutation(newsString, permu+current);
+        }
+    }
+
+
+    public static int countPath(int i , int j, int n, int m){
+        if(i==n||j==m){
+            return 0;
+        }
+        if(i==n-1&& j==m-1){
+            return 1;
+        }
+
+        int downPath = countPath(i+1, j, n, m);
+
+        int rightPath = countPath(i, j+1, n, m);
+
+
+        return downPath+rightPath;
+    }
+
+
+
+    public static int palceItems(int n, int m){
+        if(n==m){
+            return 2;
+        }
+        if(n<m){
+            return 1;
+        }
+
+        int verticalPlace = palceItems(n-m, m);
+        int horijontalPlace = palceItems(n-1, m);
+
+
+        return verticalPlace + horijontalPlace ;
+    }
+
+
+    public static int ways(int n){
+        if(n<=1){
+            return 1;
+        }
+
+        int way1 = ways(n-1);
+
+        int way2 = (n-1)* ways(n-2);
+
+        return way1 +way2;
+        }
+
+
+        public static void printSubset(ArrayList<Integer> subset){
+            for(int i=0; i<subset.size(); i++){
+                System.out.println(subset.get(i)+" ");
+            }
+            System.out.println();
+        }
+
+    public static void findSubset(int n , ArrayList<Integer> subset){
+        if(n==0){
+        printSubset(subset);
+        return;
+        }
+
+        subset.add(n);
+        findSubset(n-1 ,subset);
+
+        subset.remove(subset.size()-1);
+        findSubset(n-1 , subset);
+    }
+
+
     public static void main(String[] args) {
 
         //-------------------Bubbole Sort-------------------//
@@ -349,8 +433,27 @@ public class Advance {
     // HashSet<String> set = new HashSet<>();
     // subsequence(str, 0, "" , set);
 
-    String str = "234";
-    printComb(str, 0, "");
+
+    // String str ="abc";
+    // permutation(str, "");
+
+
+    // int n=3;
+    // int m=3;
+
+    // int totalCount =countPath(0, 0 , n ,m );
+    // System.out.println(totalCount);
+
+
+
+    // int n =4;
+    // System.out.println(ways(n));
+
+    int n =3;
+
+    ArrayList<Integer> subset = new ArrayList<>();
+    findSubset(n , subset);
+ 
     }
 
 }
