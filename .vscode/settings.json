@@ -1,5 +1,3 @@
 {
-    "debug.autoExpandLazyVariables": "off",
-    "debug.console.collapseIdenticalLines": false,
     "java.debug.settings.onBuildFailureProceed": true
 }
