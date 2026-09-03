@@ -165,6 +165,24 @@ public class Practice {
 
 
 
+    //-------Q-11__find permutation of a string--------//
+
+    public static void findPermutation(String str , String permuted ){
+        if(str.length()==0){
+            System.err.println(permuted);
+            return;
+        }
+
+    
+        for(int i =0; i<str.length();i++){
+            char current = str.charAt(i);
+            String newString = str.substring(0,i) + str.substring(i+1);
+            findPermutation(newString , permuted+current );
+        }
+    }
+
+
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -208,8 +226,13 @@ public class Practice {
 
         // -------Execute-10----------//
 
-        String str = "abcxdxhdgxsgdxdsxs";
-        moveAllNToEnd(0, str, "", 'x', 0);
+        // String str = "abcxdxhdgxsgdxdsxs";
+        // moveAllNToEnd(0, str, "", 'x', 0);
+
+        //---------Execute-11----------//
+
+        String str = "HTH";
+        findPermutation(str , " " );
     }
 
 }

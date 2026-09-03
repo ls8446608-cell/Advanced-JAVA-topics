@@ -506,8 +506,8 @@ public class Advance {
         // String str = "aaa";
         // HashSet<String> set = new HashSet<>();
         // subsequence(str, 0, "" , set);
-        // String str ="abc";
-        // permutation(str, "");
+        String str ="abc";
+        permutation(str, "");
         // int n=3;
         // int m=3;
         // int totalCount =countPath(0, 0 , n ,m );
@@ -520,19 +520,19 @@ public class Advance {
         //-----------------Backtracking-----------------//
         // String str = "lokesh";
         // printpermutaion(str, 0, "");
-        Advance solver = new Advance(); // Instantiating the class
-        int n = 4;
-        List<List<String>> solutions = solver.solveQueens(n);
+        // Advance solver = new Advance(); // Instantiating the class
+        // int n = 4;
+        // List<List<String>> solutions = solver.solveQueens(n);
 
-        System.out.println("Total solutions for N = " + n + ": " + solutions.size());
-        for (int i = 0; i < solutions.size(); i++) {
-            System.out.println("\nSolution " + (i + 1) + ":");
-            for (String row : solutions.get(i)) {
-                System.out.println(row);
+        // System.out.println("Total solutions for N = " + n + ": " + solutions.size());
+        // for (int i = 0; i < solutions.size(); i++) {
+        //     System.out.println("\nSolution " + (i + 1) + ":");
+        //     for (String row : solutions.get(i)) {
+        //         System.out.println(row);
 
-            }
+        //     }
 
-        }
+        // }
     }
 
 }
