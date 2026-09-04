@@ -183,6 +183,77 @@ public class Practice {
 
 
 
+    //------Q-12__Remove duplicates from String-------//
+
+
+    public static boolean map[] = new boolean [26];
+
+    public static void removeDupe(int idx , String str, String newString){
+        if(idx==str.length()){
+            System.err.println(newString);
+            return;
+
+        }
+
+        char current = str.charAt(idx);
+        if(map[current-'a']){
+            removeDupe(idx+1, str, newString);
+            
+            
+            
+        }else{
+            newString+=current;
+            map[current-'a']=true;
+            removeDupe(idx+1, str, newString);
+        }
+    }
+
+
+    //------Q-13__Print uniqe subSeqences form String-------//
+
+
+    public static void subSeqences(int idx, String str , String newString,HashSet<String>set){
+        if(idx ==str.length()){
+            if(set.contains(newString)){
+                return;
+                
+            }else{
+                System.out.println(newString);
+                set.add(newString);
+                return;
+
+            }
+            
+        }
+        char current = str.charAt(idx);
+         
+        //to be
+        subSeqences(idx+1, str, newString+current,set);
+        //to not to be
+        subSeqences(idx+1, str, newString,set);
+    }
+
+
+    //------Q-14___Print Combinations of Kepad phone-------//
+
+
+    public static String[] keyPad = {".", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tu", "vwx", "yz"};
+
+    public static void printComb(int idx, String str, String combinations){
+        if(idx==str.length()){
+            System.err.println(combinations);
+            return;
+        }
+         char current= str.charAt(idx);
+
+         String mapping = keyPad[current-'0'];
+         for(int i=0; i<mapping.length(); i++){
+            printComb(idx+1, str, combinations+mapping.charAt(i));
+
+         }
+    }
+
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -231,8 +302,30 @@ public class Practice {
 
         //---------Execute-11----------//
 
-        String str = "HTH";
-        findPermutation(str , " " );
+        // String str = "HTH";
+        // findPermutation(str , " " );
+
+
+        //---------Execute-12----------//
+
+        // String str= "abacdcad";
+        // removeDupe(0, str, "");
+
+
+
+        
+        //---------Execute-13----------//
+
+        // String str= "aaa";
+        // HashSet<String> set = new HashSet<>();
+        // subSeqences(0, str,"" ,set);
+
+        
+        
+        //---------Execute-14----------//
+
+        String str="233";
+        printComb(0, str, "");
     }
 
 }
