@@ -1,5 +1,6 @@
 
 import java.util.*;
+import java.util.ArrayList;
 
 public class Practice {
 
@@ -254,6 +255,100 @@ public class Practice {
     }
 
 
+
+
+    //-----Q-15__count the number of Paths to reach the end of the maze-------//
+
+
+    public static int countPath(int i , int j, int n,int m){
+        if(i==n-1 && j==m-1){
+            return 1;
+        }
+        if(i>=n || j>=m){
+            return 0;
+        }
+         
+
+        int down = countPath(i+1, j,n,m);
+        int right = countPath(i, j+1, n,m);
+        return down+right;
+
+    }
+
+
+    //------Q-16__count ways to tilling in n*m grid with 1*m tile--------//
+
+
+    public static int countWays(int n, int m){
+        if(n==m){
+            return 2;
+        }
+        if(n<m){
+            return 1;
+        }
+
+        //--way 1-----
+
+        int way1 = countWays(n-1, m);
+
+        //---way 2----
+         int way2 = countWays(n-m, m);
+
+         return way1+way2;
+    }
+
+
+
+    //-----Q-17__Friends pairing problem-------//
+
+
+    public static int findPair(int n){
+        if(n<=1){
+            return 1;
+        }
+
+        //  if comes single ---
+        int way1 =findPair(n-1);
+
+        // if comes in pair-----
+
+        int way2 =(n-1)*findPair(n-2);
+
+        return way1+way2;
+    }
+
+
+
+    //------Q-18__Subsets of a set-------//
+
+    public static void printSubset(ArrayList<Integer>subSet){
+        for(int i=0; i<subSet.size();i++){
+            System.out.print(subSet.get(i));
+        }
+        System.out.println();
+        
+        return;
+    }
+
+    public static void findSubset(int n , ArrayList<Integer>subSet){
+        if(n==0){
+            
+            printSubset(subSet);
+            return;
+
+        }
+
+        //if wants to come--
+        subSet.add(n);
+        findSubset(n-1, subSet);
+
+        //if not wants to come--
+        subSet.remove(subSet.size()-1);
+        findSubset(n-1,subSet);
+    }
+
+
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -324,8 +419,44 @@ public class Practice {
         
         //---------Execute-14----------//
 
-        String str="233";
-        printComb(0, str, "");
+        // String str="233";
+        // printComb(0, str, "");
+
+
+        //---------Execute-15----------//
+
+
+        // int n = 3;
+        // int m= 4;
+        // System.out.println(countPath(0, 0, n, m));
+
+
+        //---------Execute-16-----------//
+
+
+        // int n = 4;
+        // int m= 2;
+
+        // System.out.println(countWays(n,m));
+
+
+
+        
+
+        //---------Execute-17-----------//
+
+
+        // int n= 5;
+        // System.out.println(findPair(n));
+
+
+        
+        //---------Execute-18-----------//
+
+        int n= 4;
+        ArrayList<Integer> subSet = new ArrayList<>();
+        findSubset(n,subSet);
+
     }
 
 }
